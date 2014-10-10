@@ -1,0 +1,18 @@
+<%= form_for(@offer_internet) do |f| %>
+
+  <div class="field">
+    <%= f.label :has_wireless %>
+    <%= f.radio_button :has_wireless %>
+  </div>
+
+  <div class="field">
+    <%= f.label :has_wired %>
+    <%= f.radio_button :has_wired %>
+  </div>
+
+  <div class="field">
+    <%= f.label :has_internet %>
+    <%= f.radio_button :has_internet %>
+  </div>
+
+<% end %>

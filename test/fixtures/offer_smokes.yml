@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  permit_smoking_inside: false
+  permite_smoking_outside: false
+  no_smoking: false
+
+two:
+  permit_smoking_inside: false
+  permite_smoking_outside: false
+  no_smoking: false

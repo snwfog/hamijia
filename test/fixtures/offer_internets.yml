@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  has_wireless: false
+  has_wired: false
+  has_internet: false
+
+two:
+  has_wireless: false
+  has_wired: false
+  has_internet: false
