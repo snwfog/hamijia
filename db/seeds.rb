@@ -5,3 +5,19 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+20.times do
+  Owner.create(
+     first_name: Faker::Name.first_name,
+     last_name: Faker::Name.last_name,
+     email: Faker::Internet.email,
+     phone_number: Faker::PhoneNumber.cell_phone,
+     primary_language: %w(English French Chinese).sample
+  )
+
+  rand(3).times do
+    Owner.last.children.create(age: (1..20).to_a.sample)
+  end
+
+  Owner.last.create_home
+end

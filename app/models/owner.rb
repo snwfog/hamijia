@@ -1,3 +1,6 @@
 class Owner < ActiveRecord::Base
-  belongs_to :home
+
+  has_many :children
+  has_one :home
+
 end
