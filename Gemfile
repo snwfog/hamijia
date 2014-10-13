@@ -18,3 +18,7 @@ gem 'mailgun'
 gem 'devise'
 gem 'simple_token_authentication'
 gem "awesome_nested_set", '~> 3.0.0.rc.3'
+
+gem "acts_as_rateable", :git => "git://github.com/anton-zaytsev/acts_as_rateable.git"
+gem 'acts_as_commentable'
+gem 'wicked'

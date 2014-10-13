@@ -1,9 +1,9 @@
 class Home < ActiveRecord::Base
-  belongs_to :owner
+  belongs_to :offering
+
   has_one :address
 
-  # has_many :offers
-
+  # Offerings
   has_many :offer_meal
   has_one :offer_internet
   has_one :offer_smoke

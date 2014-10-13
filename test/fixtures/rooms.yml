@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  room_rate: 1
+  availability: 2014-10-10
+  has_desk: false
+  bed_size: MyString
+  floor: MyString
+  entrance: MyString
+  bathroom_access: MyString
+  internet_access: MyString
+  television_avaibility: MyString
+
+two:
+  room_rate: 1
+  availability: 2014-10-10
+  has_desk: false
+  bed_size: MyString
+  floor: MyString
+  entrance: MyString
+  bathroom_access: MyString
+  internet_access: MyString
+  television_avaibility: MyString

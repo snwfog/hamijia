@@ -1,6 +1,7 @@
 class Owner < ActiveRecord::Base
+  acts_as_commentable
 
   has_many :children
-  has_one :home
-
+  has_many :offerings
+  has_many :homes, through: :offerings
 end
