@@ -1,3 +1,3 @@
 class OfferSmoke < ActiveRecord::Base
-  belongs_to :home
+  belongs_to :room
 end

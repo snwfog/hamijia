@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141012051120) do
+ActiveRecord::Schema.define(version: 20141013163737) do
 
   create_table "addresses", force: true do |t|
     t.string   "postal_code"
@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(version: 20141012051120) do
   create_table "homes", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "has_pet"
     t.integer  "offering_id"
   end
 
@@ -85,6 +84,12 @@ ActiveRecord::Schema.define(version: 20141012051120) do
 
   add_index "offer_meals", ["home_id"], name: "index_offer_meals_on_home_id", using: :btree
 
+  create_table "offer_pets", force: true do |t|
+    t.boolean  "has_pet"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "offer_smokes", force: true do |t|
     t.boolean  "permit_smoking_inside"
     t.boolean  "permite_smoking_outside"
@@ -106,14 +111,35 @@ ActiveRecord::Schema.define(version: 20141012051120) do
   add_index "offerings", ["owner_id"], name: "index_offerings_on_owner_id", using: :btree
 
   create_table "owners", force: true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.string   "phone_number"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "primary_language"
   end
+
+  create_table "pets", force: true do |t|
+    t.string   "type"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "rates", force: true do |t|
+    t.integer "score"
+  end
+
+  create_table "ratings", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "rate_id"
+    t.integer  "rateable_id"
+    t.string   "rateable_type", limit: 32
+    t.text     "free_text"
+    t.string   "rater_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ratings", ["rate_id"], name: "index_ratings_on_rate_id", using: :btree
+  add_index "ratings", ["rateable_id", "rateable_type"], name: "index_ratings_on_rateable_id_and_rateable_type", using: :btree
 
   create_table "rooms", force: true do |t|
     t.integer  "room_rate"
@@ -131,5 +157,23 @@ ActiveRecord::Schema.define(version: 20141012051120) do
   end
 
   add_index "rooms", ["home_id"], name: "index_rooms_on_home_id", using: :btree
+
+  create_table "students", force: true do |t|
+    t.string   "country"
+    t.string   "city"
+    t.string   "education"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "email"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "middle_name"
+    t.string   "phone_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

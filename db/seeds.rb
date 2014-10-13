@@ -18,6 +18,4 @@
   rand(3).times do
     Owner.last.children.create(age: (1..20).to_a.sample)
   end
-
-  Owner.last.create_home
 end
