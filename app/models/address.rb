@@ -1,3 +1,3 @@
 class Address < ActiveRecord::Base
-  belongs_to :home
+  belongs_to :house
 end

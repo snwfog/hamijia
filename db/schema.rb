@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141013163737) do
+ActiveRecord::Schema.define(version: 20141014033832) do
 
   create_table "addresses", force: true do |t|
     t.string   "postal_code"
@@ -61,6 +61,11 @@ ActiveRecord::Schema.define(version: 20141013163737) do
   end
 
   add_index "homes", ["offering_id"], name: "index_homes_on_offering_id", using: :btree
+
+  create_table "houses", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "offer_internets", force: true do |t|
     t.boolean  "has_wireless"

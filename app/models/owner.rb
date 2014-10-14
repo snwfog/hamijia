@@ -4,7 +4,7 @@ class Owner < User
   has_many :children
   has_many :pets
   has_many :offerings
-  has_many :homes, through: :offerings
+  has_many :houses, through: :offerings
 
   def login
     self[:first_name]
