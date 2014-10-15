@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
 
-  resources :houses, shallow: true do
-
+  resources :owners, shallow: true do
+    resources :offerings
   end
 
+  resources :students
 
-  resources :owners, shallow: true do
-    resources :homes, shallow: true do
-      resources :addresses
-    end
+  resources :houses, shallow: true do
+    resources :address
+    resources :rooms
   end
 
   match '*path', controller: :application, action: :routing_error, via: :all
