@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141015004510) do
+ActiveRecord::Schema.define(version: 20141015030016) do
 
   create_table "addresses", force: true do |t|
     t.string   "postal_code"
@@ -21,7 +21,10 @@ ActiveRecord::Schema.define(version: 20141015004510) do
     t.string   "province"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "house_id"
   end
+
+  add_index "addresses", ["house_id"], name: "index_addresses_on_house_id", using: :btree
 
   create_table "children", force: true do |t|
     t.integer  "age"
@@ -65,7 +68,10 @@ ActiveRecord::Schema.define(version: 20141015004510) do
   create_table "houses", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "offering_id"
   end
+
+  add_index "houses", ["offering_id"], name: "index_houses_on_offering_id", using: :btree
 
   create_table "offer_internets", force: true do |t|
     t.boolean  "has_wireless"
@@ -158,10 +164,10 @@ ActiveRecord::Schema.define(version: 20141015004510) do
     t.string   "television_avaibility"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "home_id"
+    t.integer  "house_id"
   end
 
-  add_index "rooms", ["home_id"], name: "index_rooms_on_home_id", using: :btree
+  add_index "rooms", ["house_id"], name: "index_rooms_on_house_id", using: :btree
 
   create_table "students", force: true do |t|
     t.string   "country"

@@ -25,9 +25,24 @@ end
 end
 
 10.times do
-  Owner.create(
+  owner = Owner.create(
     primary_language: %w(English French Chinese).sample,
     user: gen_user
   )
+
+  rand(3).times do
+    offering = Offering.create(active: [true, false].sample)
+    offering.house = House.create
+    offering.house.address = Address.create do |addr|
+      addr.address = Faker::Address.street_address
+      addr.postal_code = Faker::Address.postcode
+      addr.apartment = Faker::Address.secondary_address
+      addr.city = Faker::Address.city
+      addr.province = Faker::Address.state
+    end
+
+    rand(5).times { offering.house.rooms.create }
+    owner.offerings << offering
+  end
 end
 

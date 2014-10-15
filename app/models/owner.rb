@@ -8,4 +8,6 @@ class Owner < ActiveRecord::Base
   has_many :pets
   has_many :offerings
   has_many :houses, through: :offerings
+
+  has_many :comments, as: :commentable
 end

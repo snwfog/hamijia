@@ -1,6 +1,6 @@
 GIT
-  remote: git://github.com/anton-zaytsev/acts_as_rateable.git
-  revision: 01066eceb2d16e35be437b7392cc3375f1f377f7
+  remote: git://github.com/snwfog/acts_as_rateable.git
+  revision: 2244e2568cbd9e1c6bea35c64a375e7d94766b75
   specs:
     acts_as_rateable (3.0.0)
 

@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  resources :houses, shallow: true do
+
+  end
+
+
   resources :owners, shallow: true do
     resources :homes, shallow: true do
       resources :addresses
