@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :students
 
   resources :houses, shallow: true do
-    resources :address
+    resources :addresses
     resources :rooms
   end
 
