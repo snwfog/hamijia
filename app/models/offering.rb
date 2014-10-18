@@ -4,4 +4,9 @@ class Offering < ActiveRecord::Base
   has_one :house
 
   has_many :consumables
+
+
+  def active?
+    self[:status] == 'active'
+  end
 end

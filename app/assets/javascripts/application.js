@@ -14,6 +14,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree
-//= require seems_rateable
 //= require_directory ./rateable
  .
