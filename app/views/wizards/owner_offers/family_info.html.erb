@@ -1,0 +1,16 @@
+<h1>Family information</h1>
+<%= form_for :pet do |f| %>
+  <div class="form-group">
+    <%= label_tag 'name', 'Name' %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag 'type', 'Type' %>
+    <%= f.text_field :type, class: 'form-control' %>
+  </div>
+
+  <%= f.submit 'Add Pet', class: 'btn btn-success' %>
+<% end %>
+
+<%= link_to 'House Info', next_wizard_path %>

@@ -1,1 +1,8 @@
-Test
+<h1>Basic information</h1>
+<h5>This should be the user information</h5>
+<%= form_for @offering, url: wizard_path, method: :put do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+<% end %>
+
+<%= link_to 'Family Information', next_wizard_path %>

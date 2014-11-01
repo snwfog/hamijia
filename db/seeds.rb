@@ -31,7 +31,7 @@ end
   )
 
   rand(3).times do
-    offering = Offering.create(active: [true, false].sample)
+    offering = Offering.create(name: Faker::Lorem.sentence)
     offering.house = House.create
     offering.house.address = Address.create do |addr|
       addr.address = Faker::Address.street_address

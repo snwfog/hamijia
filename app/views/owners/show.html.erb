@@ -1,24 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @owner.first_name %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @owner.last_name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @owner.email %>
-</p>
-
-<p>
-  <strong>Phone number:</strong>
-  <%= @owner.phone_number %>
-</p>
+<table class="table">
+  <tr>
+    <td>First name</td>
+    <td><%= @owner.last_name %></td>
+  </tr>
+  <tr>
+    <td>Last name</td>
+    <td><%= @owner.last_name %></td>
+  </tr>
+  <tr>
+    <td>Email</td>
+    <td><%= @owner.email %></td>
+  </tr>
+  <tr>
+    <td>Phone number</td>
+    <td><%= @owner.phone_number %></td>
+  </tr>
+</table>
 
 <%= link_to 'Edit', edit_owner_path(@owner) %> |
 <%= link_to 'Back', owners_path %>

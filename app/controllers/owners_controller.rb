@@ -1,5 +1,6 @@
 class OwnersController < ApplicationController
   # before_action :set_owner, only: [:show, :edit, :update, :destroy]
+  before_action :fetch_owner, except: [:new]
 
   # GET /owners
   # GET /owners.json
@@ -10,14 +11,15 @@ class OwnersController < ApplicationController
 
   # GET /owners/1
   # GET /owners/1.json
-  # def show
-  # end
+  def show
+  end
+
   #
   # # GET /owners/new
-  # def new
-  #   @owner = Owner.new
-  # end
-  #
+  def new
+    @owner = Owner.new
+  end
+
   # # GET /owners/1/edit
   # def edit
   # end
@@ -62,14 +64,14 @@ class OwnersController < ApplicationController
   #   end
   # end
   #
-  # private
-  #   # Use callbacks to share common setup or constraints between actions.
-  #   def set_owner
-  #     @owner = Owner.find(params[:id])
-  #   end
-  #
-  #   # Never trust parameters from the scary internet, only allow the white list through.
-  #   def owner_params
-  #     params.require(:owner).permit(:first_name, :last_name, :email, :phone_number)
-  #   end
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def fetch_owner
+    @owner = Owner.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def owner_params
+    params.require(:owner).permit(:first_name, :last_name, :email, :phone_number)
+  end
 end

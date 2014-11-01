@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   # Figure out how to make this work
   # namespace :wizards do
   #   resources :offerings do
@@ -7,8 +6,12 @@ Rails.application.routes.draw do
   #   end
   # end
 
+  resources :owners
+
+  get 'offerings/new', to: 'wizards/owner_offers#new'
+
   resources :offerings do
-    resources :build, controller: 'wizards/owner_offers'
+    resources :build, controller: 'wizards/owner_offers', only: [:show, :update]
   end
 
   # resources :owners do
