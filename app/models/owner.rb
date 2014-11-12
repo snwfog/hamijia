@@ -16,6 +16,9 @@ class Owner < ActiveRecord::Base
 
   has_many :comments, as: :commentable
 
+  accepts_nested_attributes_for :pets
+  accepts_nested_attributes_for :children
+
   def initialize
     super
     self.user = User.new

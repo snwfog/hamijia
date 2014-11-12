@@ -1,16 +1,30 @@
 <h1>Family information</h1>
-<%= form_for :pet do |f| %>
-  <div class="form-group">
-    <%= label_tag 'name', 'Name' %>
-    <%= f.text_field :name, class: 'form-control' %>
-  </div>
+<% form_for setup_owner(@owner) do |owner_form| %>
+  <h2>Children</h2>
+  <%= @owner.pets.count %>
+  <%= @owner.children.count %>
 
-  <div class="form-group">
-    <%= label_tag 'type', 'Type' %>
-    <%= f.text_field :type, class: 'form-control' %>
-  </div>
+  <% owner_form.fields_for :children do |child_form| %>
+    <div class="form-group">
+      <%= child_form.label :age %>
+      <%= child_form.text_field :age, class: 'form-control' %>
+    </div>
+  <% end %>
 
-  <%= f.submit 'Add Pet', class: 'btn btn-success' %>
+  <hr/>
+
+  <h2>Pets</h2>
+  <%= owner_form.fields_for :pet do |pet_form| %>
+    <div class="form-group">
+      <%= pet_form.label :name %>
+      <%= pet_form.text_field :name, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= pet_form.label :type %>
+      <%= pet_form.text_field :type, class: 'form-control' %>
+    </div>
+  <% end %>
 <% end %>
 
 <%= link_to 'House Info', next_wizard_path %>

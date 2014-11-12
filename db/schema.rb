@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141018191212) do
+ActiveRecord::Schema.define(version: 20141107032402) do
 
   create_table "addresses", force: true do |t|
     t.string   "postal_code"
@@ -55,7 +55,10 @@ ActiveRecord::Schema.define(version: 20141018191212) do
     t.float    "charges"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "offering_id"
   end
+
+  add_index "consumables", ["offering_id"], name: "index_consumables_on_offering_id", using: :btree
 
   create_table "homes", force: true do |t|
     t.datetime "created_at"
@@ -134,7 +137,10 @@ ActiveRecord::Schema.define(version: 20141018191212) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "owner_id"
   end
+
+  add_index "pets", ["owner_id"], name: "index_pets_on_owner_id", using: :btree
 
   create_table "rates", force: true do |t|
     t.integer "score"

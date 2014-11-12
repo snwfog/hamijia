@@ -3,7 +3,7 @@ class Wizards::OwnerOffersController < ApplicationController
   include Wicked::Wizard
   steps :basic_info, :family_info, :house_info, :room_info, :additional_info
 
-  before_action :find_offering, only: [:show]
+  before_action :find_offering, only: [:show, :update]
 
   def new
     @owner = Owner.new
@@ -18,14 +18,13 @@ class Wizards::OwnerOffersController < ApplicationController
   end
 
   def update
-    @offer = Offering.find(params[:offering_id])
-    @offer.update_attributes(offering_params)
-    render_wizard @offer
+    @offering.update_attributes(offering_params)
+    render_wizard @offering
   end
 
   def create
-    @offer = Offering.create
-    render json: @offer, status: :ok
+    @offering = Offering.create
+    render json: @offering, status: :ok
   end
 
   private
@@ -35,6 +34,10 @@ class Wizards::OwnerOffersController < ApplicationController
   
   def find_offering
     @offering = Offering.find(params[:offering_id])
+    if @offering.owner.nil?
+      @offering.owner = Owner.new
+      @owner = @offering.owner
+    end
   end
 end
 
