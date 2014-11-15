@@ -1,15 +1,19 @@
 <h1>Family information</h1>
-<%= form_for setup_owner(@owner) do |owner_form| %>
+<%= form_for setup_owner(@owner), html: { class: 'form-horizontal' } do |owner_form| %>
   Owner has <%= @owner.pets.size %> pets.
   Owner has <%= @owner.children.size %> children.
   <div class="form-group">
-    <%= owner_form.label :primary_language %>
-    <%= owner_form.text_field :primary_language %>
+    <%= owner_form.label :primary_language, class: 'col-md-2 control-label' %>
+    <div class="col-md-5">
+      <%= owner_form.text_field :primary_language, class: 'form-control' %>
+    </div>
   </div>
 
   <div class="form-group">
-    <%= owner_form.label :status %>
-    <%= owner_form.text_field :status %>
+    <%= owner_form.label :status, class: 'col-md-2 control-label' %>
+    <div class="col-md-5">
+      <%= owner_form.text_field :status, class: 'form-control' %>
+    </div>
   </div>
 
 

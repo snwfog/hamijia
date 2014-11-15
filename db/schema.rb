@@ -118,6 +118,7 @@ ActiveRecord::Schema.define(version: 20141107032402) do
   create_table "offerings", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "active"
     t.integer  "owner_id"
     t.string   "status"
     t.string   "name"
