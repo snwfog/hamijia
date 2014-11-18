@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
+//= require bootstrap/dist/js/bootstrap
 //= require turbolinks
 //= require_tree
 //= require_directory ./rateable

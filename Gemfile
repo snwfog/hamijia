@@ -21,7 +21,7 @@ gem 'wicked'
 gem 'faker'
 gem 'therubyracer'
 gem 'less-rails'
-gem 'twitter-bootstrap-rails'
+gem 'railsstrap'
 
 group :development do
   gem 'priscilla'

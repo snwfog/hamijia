@@ -1,45 +1,61 @@
 <h1>Family information</h1>
 <%= form_for setup_owner(@owner), html: { class: 'form-horizontal' } do |owner_form| %>
-  Owner has <%= @owner.pets.size %> pets.
-  Owner has <%= @owner.children.size %> children.
-  <div class="form-group">
-    <%= owner_form.label :primary_language, class: 'col-md-2 control-label' %>
-    <div class="col-md-5">
-      <%= owner_form.text_field :primary_language, class: 'form-control' %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <%= owner_form.label :status, class: 'col-md-2 control-label' %>
-    <div class="col-md-5">
-      <%= owner_form.text_field :status, class: 'form-control' %>
-    </div>
-  </div>
-
-
-  <% owner_form.fields_for :children do |child_form| %>
+  <fieldset>
+    <legend>Family</legend>
     <div class="form-group">
-      <h2>Child</h2>
-      <%= child_form.label :age %>
-      <%= child_form.text_field :age, class: 'form-control' %>
-    </div>
-  <% end %>
-
-  <hr/>
-
-  <h2>Pets</h2>
-  <%= owner_form.fields_for :pet do |pet_form| %>
-    <div class="form-group">
-      <h2>Pet</h2>
-      <%= pet_form.label :name %>
-      <%= pet_form.text_field :name, class: 'form-control' %>
+      <%= owner_form.label :primary_language, class: 'col-md-2 control-label' %>
+      <div class="col-md-5">
+        <%= owner_form.text_field :primary_language, class: 'form-control' %>
+      </div>
     </div>
 
     <div class="form-group">
-      <%= pet_form.label :type %>
-      <%= pet_form.text_field :type, class: 'form-control' %>
+      <%= owner_form.label :status, class: 'col-md-2 control-label' %>
+      <div class="col-md-5">
+        <%= owner_form.text_field :status, class: 'form-control' %>
+      </div>
     </div>
-  <% end %>
+  </fieldset>
+
+
+  <fieldset>
+    <legend>Children</legend>
+    <%= owner_form.fields_for :children do |child_form| %>
+      <div class="form-group">
+        <%= child_form.label :age, class: 'col-md-2 control-label' %>
+        <div class="col-md-5">
+          <%= child_form.text_field :age, class: 'form-control' %>
+        </div>
+      </div>
+    <% end %>
+  </fieldset>
+
+  <fieldset>
+    <legend>Pets</legend>
+    <%= owner_form.fields_for :pet do |pet_form| %>
+      <div class="form-group">
+        <%= pet_form.label :name, class: 'col-md-2 control-label' %>
+        <div class="col-md-5">
+          <%= pet_form.text_field :name, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= pet_form.label :type, class: 'col-md-2 control-label' %>
+        <div class="col-md-5">
+          <%= pet_form.text_field :type, class: 'form-control' %>
+        </div>
+      </div>
+    <% end %>
+  </fieldset>
 <% end %>
 
-<%= link_to 'House Info', next_wizard_path %>
+<hr/>
+
+<div class="btn-group">
+  <%= button_to previous_wizard_path, class: 'btn btn-default' do %>
+    <%= content_tag(:span, nil, class: 'glyphicon glyphicon-backward') %> Back
+  <% end %>
+  <%= button_to content_tag(:span, 'Basic Information', class: 'glyphicon glyphicon-backward'), previous_wizard_path, class: 'btn btn-default' %>
+  <%= button_to content_tag(:span, 'House Information', class: 'glyphicon glyphicon-forward'), next_wizard_path, class: 'btn btn-default' %>
+</div>
