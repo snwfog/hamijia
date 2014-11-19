@@ -34,10 +34,8 @@ class Wizards::OwnerOffersController < ApplicationController
   
   def find_offering
     @offering = Offering.find(params[:offering_id])
-    if @offering.owner.nil?
-      @offering.owner = Owner.new
-      @owner = @offering.owner
-    end
+    @offering.build_owner if @offering.owner.nil?
+    @owner = @offering.owner
   end
 end
 

@@ -1,5 +1,5 @@
 <h1>Family information</h1>
-<%= form_for setup_owner(@owner), html: { class: 'form-horizontal' } do |owner_form| %>
+<%= form_for setup_owner(@owner), url: wizard_path, method: :put, html: { class: 'form-horizontal' } do |owner_form| %>
   <fieldset>
     <legend>Family</legend>
     <div class="form-group">
@@ -48,14 +48,11 @@
       </div>
     <% end %>
   </fieldset>
+
+  <hr/>
+
+  <div class="btn-group">
+    <%= link_to 'Basic Information', previous_wizard_path, class: 'btn btn-primary' %>
+    <%= owner_form.submit 'House Information', class: 'btn btn-primary' %>
+  </div>
 <% end %>
-
-<hr/>
-
-<div class="btn-group">
-  <%= button_to previous_wizard_path, class: 'btn btn-default' do %>
-    <%= content_tag(:span, nil, class: 'glyphicon glyphicon-backward') %> Back
-  <% end %>
-  <%= button_to content_tag(:span, 'Basic Information', class: 'glyphicon glyphicon-backward'), previous_wizard_path, class: 'btn btn-default' %>
-  <%= button_to content_tag(:span, 'House Information', class: 'glyphicon glyphicon-forward'), next_wizard_path, class: 'btn btn-default' %>
-</div>
