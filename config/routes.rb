@@ -6,10 +6,20 @@ Rails.application.routes.draw do
   #   end
   # end
 
-  resources :owners
+
+  get 'choose', to: 'choose#choose'
+  post 'choose/owner', to: 'choose#as_owner'
+  post 'choose/student', to: 'choose#as_student'
 
   get 'offerings/new', to: 'wizards/owner_offers#new'
 
+  get 'students/iamstudent', to: 'students#new'
+  post 'students/choose', to: 'students#choose', as: :starts_as_a_student
+
+  get 'owners/iamowner', to: 'owners#new'
+  post 'owners/choose', to: 'owners#choose', as: :starts_as_an_owner
+
+  resources :owners
   resources :offerings do
     resources :build, controller: 'wizards/owner_offers', only: [:show, :update]
   end

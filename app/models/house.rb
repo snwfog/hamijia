@@ -3,4 +3,6 @@ class House < ActiveRecord::Base
 
   has_one :address
   has_many :rooms
+
+  accepts_nested_attributes_for :address
 end

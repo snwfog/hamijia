@@ -17,7 +17,6 @@
     </div>
   </fieldset>
 
-
   <fieldset>
     <legend>Children</legend>
     <%= owner_form.fields_for :children do |child_form| %>
@@ -32,7 +31,7 @@
 
   <fieldset>
     <legend>Pets</legend>
-    <%= owner_form.fields_for :pet do |pet_form| %>
+    <%= owner_form.fields_for :pets do |pet_form| %>
       <div class="form-group">
         <%= pet_form.label :name, class: 'col-md-2 control-label' %>
         <div class="col-md-5">
@@ -41,9 +40,9 @@
       </div>
 
       <div class="form-group">
-        <%= pet_form.label :type, class: 'col-md-2 control-label' %>
+        <%= pet_form.label :kind, class: 'col-md-2 control-label' %>
         <div class="col-md-5">
-          <%= pet_form.text_field :type, class: 'form-control' %>
+          <%= pet_form.text_field :kind, class: 'form-control' %>
         </div>
       </div>
     <% end %>

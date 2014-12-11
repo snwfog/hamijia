@@ -1,6 +1,19 @@
 class OwnersController < ApplicationController
   # before_action :set_owner, only: [:show, :edit, :update, :destroy]
-  before_action :fetch_owner, except: [:new]
+  before_action :fetch_owner, except: [:new, :choose]
+
+  # # GET /owners/new
+  def new; end
+
+  def choose
+    if current_user.role.nil?
+      Owner.create.user = current_user
+    else
+      raise 'User is already associated with a student role, and cannot be reassigned' if current_user.role.is_student?
+    end
+
+    render 'starts_as_an_owner'
+  end
 
   # GET /owners
   # GET /owners.json
@@ -11,14 +24,9 @@ class OwnersController < ApplicationController
 
   # GET /owners/1
   # GET /owners/1.json
-  def show
-  end
+  # def show
+  # end
 
-  #
-  # # GET /owners/new
-  def new
-    @owner = Owner.new
-  end
 
   # # GET /owners/1/edit
   # def edit

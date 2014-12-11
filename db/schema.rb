@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141107032402) do
+ActiveRecord::Schema.define(version: 20141211005401) do
 
   create_table "addresses", force: true do |t|
     t.string   "postal_code"
@@ -118,7 +118,6 @@ ActiveRecord::Schema.define(version: 20141107032402) do
   create_table "offerings", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "active"
     t.integer  "owner_id"
     t.string   "status"
     t.string   "name"
@@ -134,11 +133,12 @@ ActiveRecord::Schema.define(version: 20141107032402) do
   end
 
   create_table "pets", force: true do |t|
-    t.string   "type"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "owner_id"
+    t.string   "species"
+    t.string   "family"
   end
 
   add_index "pets", ["owner_id"], name: "index_pets_on_owner_id", using: :btree
@@ -195,8 +195,8 @@ ActiveRecord::Schema.define(version: 20141107032402) do
     t.string   "phone_number"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "user_type"
-    t.integer  "user_id"
+    t.string   "role_type"
+    t.integer  "role_id"
   end
 
 end

@@ -13,12 +13,17 @@ class Wizards::OwnerOffersController < ApplicationController
   end
 
   def show
-    pr step
     render_wizard
   end
 
   def update
-    @offering.update_attributes(offering_params)
+    case step
+    when :basic_info
+      @offering.update_attributes(owner_offer_wizard_params)
+    when :family_info
+      @offering.owner.update_attributes(owner_offer_wizard_params)
+    end
+
     render_wizard @offering
   end
 
@@ -28,10 +33,16 @@ class Wizards::OwnerOffersController < ApplicationController
   end
 
   private
-  def offering_params
-    params.require(:offering).permit(:name)
+
+  def owner_offer_wizard_params
+    case step
+    when :basic_info
+      params.require(:offering).permit(:name)
+    when :family_info
+      params.require(:owner).permit(:primary_language, :status, children_attributes: [:age], pets_attributes: [:name, :kind])
+    end
   end
-  
+
   def find_offering
     @offering = Offering.find(params[:offering_id])
     @offering.build_owner if @offering.owner.nil?
